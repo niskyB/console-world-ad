@@ -1,8 +1,7 @@
-import { joiResolver } from '@hookform/resolvers/joi';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/components/form';
-import { authRegister, AuthRegisterDto, authRegisterSchema } from './action';
+import { authRegister, AuthRegisterDto } from './action';
 
 const defaultValues: AuthRegisterDto = {
     password: '',
@@ -16,7 +15,6 @@ interface RegisterProps {}
 export const Register: React.FC<RegisterProps> = () => {
     const methods = useForm<AuthRegisterDto>({
         defaultValues,
-        resolver: joiResolver(authRegisterSchema),
     });
 
     const _handleOnSubmit = async (data: AuthRegisterDto) => {
