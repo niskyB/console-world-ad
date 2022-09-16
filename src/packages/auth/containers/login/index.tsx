@@ -1,13 +1,15 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/components/form';
+import { routes } from '../../../../core/routes';
 
 import { authLogin, AuthLoginDto } from './action';
 
 const defaultValues: AuthLoginDto = {
     password: '',
-    username: '',
+    email: '',
 };
 
 interface LoginProps {}
@@ -33,7 +35,7 @@ export const Login: React.FC<LoginProps> = () => {
                     <FormWrapper methods={methods}>
                         <form className="mt-8 space-y-6" onSubmit={methods.handleSubmit(_handleOnSubmit)}>
                             <input type="hidden" name="remember" defaultValue="true" />
-                            <div className="space-y-4 -space-y-px rounded-md shadow-sm">
+                            <div className="space-y-4 rounded-md shadow-sm">
                                 <TextField label="Email" name="email" />
                                 <TextField label="Password" name="password" />
                             </div>
@@ -43,6 +45,13 @@ export const Login: React.FC<LoginProps> = () => {
                                     <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                                         Forgot your password?
                                     </a>
+                                </div>
+                                <div className="text-sm">
+                                    <div className="font-medium text-indigo-600 hover:text-indigo-500">
+                                        <Link href={routes.registerUrl}>
+                                            <a>Don&apos;t have an account?</a>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
 

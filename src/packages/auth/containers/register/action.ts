@@ -1,7 +1,7 @@
 import { http } from '../../../../core/api';
 import { User } from '../../../../core/models/user';
 
-export interface AuthRegisterDto extends Pick<User, 'username' | 'password' | 'name'> {
+export interface AuthRegisterDto extends Pick<User, 'email' | 'password' | 'name'> {
     confirmPassword: string;
 }
 

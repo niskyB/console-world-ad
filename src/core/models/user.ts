@@ -14,6 +14,7 @@ export interface User {
     id: string;
     name: string;
     username: string;
+    phone: string;
     password: string;
     email: string;
     googleId: string;
