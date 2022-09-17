@@ -1,9 +1,7 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
-import Link from 'next/link';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/components/form';
-import { routes } from '../../../../core/routes';
 
 import { authLogin, AuthLoginDto } from './action';
 
