@@ -46,13 +46,6 @@ export const Login: React.FC<LoginProps> = () => {
                                         Forgot your password?
                                     </a>
                                 </div>
-                                <div className="text-sm">
-                                    <div className="font-medium text-indigo-600 hover:text-indigo-500">
-                                        <Link href={routes.registerUrl}>
-                                            <a>Don&apos;t have an account?</a>
-                                        </Link>
-                                    </div>
-                                </div>
                             </div>
 
                             <div>
