@@ -1,9 +1,13 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/components/form';
-
+import { toast } from 'react-toastify';
 import { authLogin, AuthLoginDto } from './action';
+import { Message } from '../../../../core/common/constants/message';
+import { useRouter } from 'next/router';
+import { routes } from '../../../../core/routes';
 
 const defaultValues: AuthLoginDto = {
     password: '',
@@ -13,13 +17,19 @@ const defaultValues: AuthLoginDto = {
 interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = () => {
+    const router = useRouter();
     const methods = useForm<AuthLoginDto>({
         defaultValues,
     });
 
     const _handleOnSubmit = async (data: AuthLoginDto) => {
-        const res = await authLogin(data);
-        console.log(res);
+        try {
+            await authLogin(data);
+            toast.success(Message.LOGIN_SUCCESS);
+            router.push(routes.homeUrl);
+        } catch (err) {
+            toast.error(Message.LOGIN_FAILED);
+        }
     };
 
     return (
@@ -27,7 +37,9 @@ export const Login: React.FC<LoginProps> = () => {
             <div className="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
                 <div className="w-full max-w-md space-y-8">
                     <div>
-                        <img className="w-auto mx-auto h-52" src="/asset/images/icon/logo-image.png" alt="Console World" />
+                        <div className="relative w-auto h-52">
+                            <Image layout="fill" src="/asset/images/icon/logo-image.png" alt="Console World" />
+                        </div>
                         <h2 className="mt-6 text-3xl font-bold tracking-tight text-center text-gray-900">Sign In To Your Account</h2>
                     </div>
                     <FormWrapper methods={methods}>
