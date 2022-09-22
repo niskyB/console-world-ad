@@ -7,5 +7,5 @@ interface FormErrorMessageProps {}
 export const FormErrorMessage: React.FC<FormErrorMessageProps> = () => {
     const { errorMessage = '' } = useStoreApi();
 
-    return <>{Boolean(errorMessage) && <div>{errorMessage}</div>}</>;
+    return <>{Boolean(errorMessage) && <div className="text-red-500">{errorMessage}</div>}</>;
 };

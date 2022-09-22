@@ -35,7 +35,7 @@ export const Login: React.FC<LoginProps> = () => {
                             <input type="hidden" name="remember" defaultValue="true" />
                             <div className="space-y-4 rounded-md shadow-sm">
                                 <TextField label="Email" name="email" />
-                                <TextField label="Password" name="password" />
+                                <TextField label="Password" name="password" type="password" />
                             </div>
                             <FormErrorMessage />
                             <div className="flex items-center justify-between">
