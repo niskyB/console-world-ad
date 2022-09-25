@@ -1,11 +1,17 @@
-import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
+import { ArrowCircleLeftIcon, CalendarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import { routes } from '../../core/routes';
 import { useStoreUser } from '../../core/store';
+import { logout } from '../auth';
 
 interface SideBarProps {}
+
+const _handleLogout = async () => {
+    await logout();
+    window.location.reload();
+};
 
 const navigation = [
     { name: 'Dashboard', icon: HomeIcon, href: '#', current: true },
@@ -13,7 +19,7 @@ const navigation = [
     { name: 'Projects', icon: FolderIcon, href: '#', count: 4, current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
     { name: 'Documents', icon: InboxIcon, href: '#', current: false },
-    { name: 'Reports', icon: ChartBarIcon, href: '#', count: 12, current: false },
+    { name: 'Logout', icon: ArrowCircleLeftIcon, href: '#', onClick: _handleLogout, current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -36,6 +42,7 @@ export const SideBar: React.FC<SideBarProps> = () => {
                             <a
                                 key={item.name}
                                 href={item.href}
+                                onClick={item.onClick}
                                 className={classNames(
                                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
