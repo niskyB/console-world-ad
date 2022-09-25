@@ -8,4 +8,7 @@ export const routes = {
     // User
     meUrl: '/user/me',
     changePasswordUrl: '/user/change-password',
+
+    // Category
+    categoryListUrl: '/category',
 };

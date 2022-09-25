@@ -1,5 +1,5 @@
 import { http } from '../../../../core/api';
-import { User } from '../../../../core/models/user';
+import { User } from '../../../../core/models';
 
 export interface EditProfileDto extends Pick<User, 'name' | 'phone'> {}
 

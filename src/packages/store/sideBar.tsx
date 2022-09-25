@@ -15,7 +15,7 @@ const _handleLogout = async () => {
 
 const navigation = [
     { name: 'Dashboard', icon: HomeIcon, href: '#', current: true },
-    { name: 'Team', icon: UsersIcon, href: '#', count: 3, current: false },
+    { name: 'Category', icon: UsersIcon, href: routes.categoryListUrl, current: false },
     { name: 'Projects', icon: FolderIcon, href: '#', count: 4, current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
     { name: 'Documents', icon: InboxIcon, href: '#', current: false },

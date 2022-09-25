@@ -19,7 +19,7 @@ export const RouterUnAuthProtectionWrapper: React.FC<RouterUnAuthProtectionWrapp
     React.useEffect(() => {
         if (user.isLogin && user.id && acceptRoles.findIndex((item) => item === user.role) !== -1) {
             router.push(routes.homeUrl);
-        } else {
+        } else if (user.isLogin && user.id && acceptRoles.findIndex((item) => item === user.role) === -1) {
             logoutUser();
         }
     }, [user, router, acceptRoles]);
