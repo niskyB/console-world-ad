@@ -6,8 +6,6 @@ import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/compo
 import { toast } from 'react-toastify';
 import { authLogin, AuthLoginDto } from './action';
 import { Message } from '../../../../core/common/constants/message';
-import { useRouter } from 'next/router';
-import { routes } from '../../../../core/routes';
 
 const defaultValues: AuthLoginDto = {
     password: '',
@@ -17,7 +15,6 @@ const defaultValues: AuthLoginDto = {
 interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = () => {
-    const router = useRouter();
     const methods = useForm<AuthLoginDto>({
         defaultValues,
     });
@@ -25,8 +22,7 @@ export const Login: React.FC<LoginProps> = () => {
     const _handleOnSubmit = async (data: AuthLoginDto) => {
         try {
             await authLogin(data);
-            toast.success(Message.LOGIN_SUCCESS);
-            router.push(routes.homeUrl);
+            window.location.reload();
         } catch (err) {
             toast.error(Message.LOGIN_FAILED);
         }

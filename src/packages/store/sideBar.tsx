@@ -1,5 +1,7 @@
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
 import * as React from 'react';
+import { useStoreUser } from '../../core/store';
 
 interface SideBarProps {}
 
@@ -17,12 +19,15 @@ function classNames(...classes: string[]) {
 }
 
 export const SideBar: React.FC<SideBarProps> = () => {
+    const user = useStoreUser();
     return (
         <>
             <div className="flex flex-col flex-1 max-w-xs max-h-screen min-h-0 bg-gray-800 border-r border-gray-200">
                 <div className="flex flex-col pt-5 pb-4">
                     <div className="flex items-center justify-center flex-shrink-0">
-                        <img className="block w-auto h-20" src="/asset/images/icon/logo-image.png" alt="" />
+                        <div className="relative w-1/2 h-20">
+                            <Image layout="fill" src="/asset/images/icon/logo-image.png" alt="Console World" />
+                        </div>
                     </div>
                     <nav className="flex-1 px-2 mt-5 space-y-1 bg-gray-800" aria-label="Sidebar">
                         {navigation.map((item) => (
@@ -59,15 +64,11 @@ export const SideBar: React.FC<SideBarProps> = () => {
                 <div className="flex p-4 mt-auto bg-gray-700">
                     <a href="#" className="flex-shrink-0 block w-full group">
                         <div className="flex items-center">
-                            <div>
-                                <img
-                                    className="inline-block rounded-full h-9 w-9"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt=""
-                                />
+                            <div className="relative inline-block rounded-full h-9 w-9">
+                                <Image layout="fill" src="/asset/images/icon/logo-image.png" alt="" />
                             </div>
                             <div className="ml-3">
-                                <p className="text-sm font-medium text-white">Tom Cook</p>
+                                <p className="text-sm font-medium text-white">{user.name}</p>
                                 <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
                             </div>
                         </div>

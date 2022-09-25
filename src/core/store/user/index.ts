@@ -14,6 +14,7 @@ const initialState: UserState = {
     username: '',
     name: '',
     id: '',
+    phone: '',
     createDate: '',
     updateDate: '',
     googleId: '',

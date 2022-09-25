@@ -1,57 +1,14 @@
 import type { NextPage } from 'next';
-import { useForm, FormProvider } from 'react-hook-form';
-
-// --- components
-import { FormWrapper } from '../src/core/components/form';
-import { FormErrorMessage } from '../src/core/components/form/formErrorMessage';
-import { TextField } from '../src/core/components/form/textField';
-import { RadioField } from '../src/core/components/form/radioField';
-import { SelectField } from '../src/core/components/form/selectField';
-
-interface TestDto {
-    username: string;
-    hello: string;
-    lll: string;
-}
-
-const defaultValues: TestDto = {
-    username: '',
-    hello: '24',
-    lll: '24',
-};
+import { RouterProtectionWrapper } from '../src/core/components/routerProtection';
+import { UserRole } from '../src/core/models/user';
+import { DashBoardLayout } from '../src/packages/store/dashBoardLayout';
 
 const Home: NextPage = () => {
-    const methods = useForm({
-        defaultValues,
-
-        mode: 'onChange',
-        reValidateMode: 'onChange',
-    });
-
     return (
         <div>
-            <FormWrapper methods={methods}>
-                {/* <TextField name="username" label="Username" /> */}
-                <TextField name="username" label="Username" type="file" />
-                <RadioField
-                    name="hello"
-                    label="test"
-                    values={[
-                        { label: 'test', value: '23' },
-                        { label: 'tes3t', value: '24' },
-                    ]}
-                />
-                <FormErrorMessage />
-                <SelectField
-                    name="lll"
-                    label="test"
-                    values={[
-                        { label: 'test', value: '23' },
-                        { label: 'tes3t', value: '24' },
-                    ]}
-                />
-            </FormWrapper>
-            <h1 className="text-3xl font-bold underline">{process.env.MY_ENV}</h1>
+            <RouterProtectionWrapper acceptRoles={[UserRole.ADMIN]}>
+                <DashBoardLayout></DashBoardLayout>
+            </RouterProtectionWrapper>
         </div>
     );
 };
