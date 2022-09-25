@@ -19,7 +19,7 @@ export const CategoryList: React.FC<CategoryListProps> = () => {
             setCategoryList(res);
             console.log(res);
         });
-    }, [categoryList]);
+    }, []);
 
     return (
         <div className="px-4 sm:px-6 lg:px-8">
