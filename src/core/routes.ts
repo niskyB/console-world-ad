@@ -11,4 +11,5 @@ export const routes = {
 
     // Category
     categoryListUrl: '/category',
+    newCategoryUrl: '/category/new',
 };

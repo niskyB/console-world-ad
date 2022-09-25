@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormWrapper, TextField } from '../../../../core/components/form';
+import { FormErrorMessage, FormWrapper, TextField } from '../../../../core/components/form';
 import { routes } from '../../../../core/routes';
 import { editProfile, EditProfileDto, getMe } from './action';
 import { toast } from 'react-toastify';
@@ -51,19 +51,20 @@ export const UserMe: React.FC<UserMeProps> = () => {
                             <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4sm:pt-5">
                                 <TextField label="Phone" name="phone" />
                             </div>
+                            <FormErrorMessage />
                         </div>
                     </div>
                 </div>
 
                 <div className="pt-5">
                     <Link href={routes.changePasswordUrl}>
-                        <a className="text-base font-medium text-blue-700 hover:text-blue-800">Change password</a>
+                        <p className="text-base font-medium text-blue-700 cursor-pointer hover:text-blue-800">Change password</p>
                     </Link>
                     <div className="flex justify-end">
                         <Link href={routes.homeUrl}>
-                            <a className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            <p className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 Cancel
-                            </a>
+                            </p>
                         </Link>
                         <button
                             type="submit"

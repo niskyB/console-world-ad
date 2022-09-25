@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { RouterProtectionWrapper } from '../../src/core/components/routerProtection';
 import { UserRole } from '../../src/core/models/user';
-import { CategoryList } from '../../src/packages/category';
+import { AddNewCategory } from '../../src/packages/category';
 import { DashBoardLayout } from '../../src/packages/store/dashBoardLayout';
 
-interface CategoryPageProps {}
+interface NewCategoryPageProps {}
 
-const CategoryPage: React.FC<CategoryPageProps> = () => {
+const NewCategoryPage: React.FC<NewCategoryPageProps> = () => {
     return (
         <RouterProtectionWrapper acceptRoles={[UserRole.ADMIN]}>
             <DashBoardLayout>
-                <CategoryList />
+                <AddNewCategory />
             </DashBoardLayout>
         </RouterProtectionWrapper>
     );
 };
 
-export default CategoryPage;
+export default NewCategoryPage;

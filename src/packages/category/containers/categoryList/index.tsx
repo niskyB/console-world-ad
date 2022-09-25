@@ -2,6 +2,7 @@ import Link from 'next/link';
 import * as React from 'react';
 import { Table, TableBody, TableDescription, TableHead, TableRow } from '../../../../core/components/table';
 import { Category } from '../../../../core/models';
+import { routes } from '../../../../core/routes';
 import { getCategoryList } from './action';
 
 interface CategoryListProps {}
@@ -28,12 +29,11 @@ export const CategoryList: React.FC<CategoryListProps> = () => {
                     <p className="mt-2 text-sm text-gray-700">A list of all the categories in system.</p>
                 </div>
                 <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <button
-                        type="button"
-                        className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-                    >
-                        Add Category
-                    </button>
+                    <Link href={routes.newCategoryUrl}>
+                        <p className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                            Add Category
+                        </p>
+                    </Link>
                 </div>
             </div>
 
