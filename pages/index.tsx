@@ -5,11 +5,9 @@ import { DashBoardLayout } from '../src/packages/store/dashBoardLayout';
 
 const Home: NextPage = () => {
     return (
-        <div>
-            <RouterProtectionWrapper acceptRoles={[UserRole.ADMIN]}>
-                <DashBoardLayout></DashBoardLayout>
-            </RouterProtectionWrapper>
-        </div>
+        <RouterProtectionWrapper acceptRoles={[UserRole.ADMIN]}>
+            <DashBoardLayout></DashBoardLayout>
+        </RouterProtectionWrapper>
     );
 };
 
