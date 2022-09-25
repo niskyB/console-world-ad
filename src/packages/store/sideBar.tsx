@@ -1,6 +1,8 @@
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
+import Link from 'next/link';
 import * as React from 'react';
+import { routes } from '../../core/routes';
 import { useStoreUser } from '../../core/store';
 
 interface SideBarProps {}
@@ -69,7 +71,9 @@ export const SideBar: React.FC<SideBarProps> = () => {
                             </div>
                             <div className="ml-3">
                                 <p className="text-sm font-medium text-white">{user.name}</p>
-                                <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
+                                <Link href={routes.meUrl}>
+                                    <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
+                                </Link>
                             </div>
                         </div>
                     </a>
