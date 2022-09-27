@@ -1,13 +1,11 @@
 import * as React from 'react';
 
-interface TableRowProps extends React.PropsWithChildren {
-    key: string;
-}
+interface TableRowProps extends React.PropsWithChildren {}
 
-export const TableRow: React.FC<TableRowProps> = ({ children, key }) => {
+export const TableRow: React.FC<TableRowProps> = ({ children }) => {
     return (
         <>
-            <tr key={key}>{children}</tr>
+            <tr>{children}</tr>
         </>
     );
 };
