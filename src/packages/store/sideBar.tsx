@@ -1,6 +1,7 @@
 import { ArrowCircleLeftIcon, CalendarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { routes } from '../../core/routes';
 import { useStoreUser } from '../../core/store';
@@ -14,9 +15,9 @@ const _handleLogout = async () => {
 };
 
 const navigation = [
-    { name: 'Dashboard', icon: HomeIcon, href: '#', current: true },
+    { name: 'Dashboard', icon: HomeIcon, href: routes.homeUrl, current: true },
     { name: 'Category', icon: UsersIcon, href: routes.categoryListUrl, current: false },
-    { name: 'Projects', icon: FolderIcon, href: '#', count: 4, current: false },
+    { name: 'Projects', icon: FolderIcon, href: '#', current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
     { name: 'Documents', icon: InboxIcon, href: '#', current: false },
     { name: 'Logout', icon: ArrowCircleLeftIcon, href: '#', onClick: _handleLogout, current: false },
@@ -28,6 +29,7 @@ function classNames(...classes: string[]) {
 
 export const SideBar: React.FC<SideBarProps> = () => {
     const user = useStoreUser();
+    const router = useRouter();
     return (
         <>
             <div className="flex flex-col flex-1 max-w-xs max-h-screen min-h-0 bg-gray-800 border-r border-gray-200">
@@ -44,28 +46,18 @@ export const SideBar: React.FC<SideBarProps> = () => {
                                 href={item.href}
                                 onClick={item.onClick}
                                 className={classNames(
-                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                                    router.asPath === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 ',
+                                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white'
                                 )}
                             >
                                 <item.icon
                                     className={classNames(
-                                        item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                                        'mr-3 flex-shrink-0 h-6 w-6'
+                                        router.asPath === item.href ? 'text-gray-300' : 'text-gray-400 ',
+                                        'mr-3 flex-shrink-0 h-6 w-6 group-hover:text-gray-300'
                                     )}
                                     aria-hidden="true"
                                 />
                                 <span className="flex-1">{item.name}</span>
-                                {item.count ? (
-                                    <span
-                                        className={classNames(
-                                            item.current ? 'bg-gray-800' : 'bg-gray-900 group-hover:bg-gray-800',
-                                            'ml-3 inline-block py-0.5 px-3 text-xs font-medium rounded-full'
-                                        )}
-                                    >
-                                        {item.count}
-                                    </span>
-                                ) : null}
                             </a>
                         ))}
                     </nav>
