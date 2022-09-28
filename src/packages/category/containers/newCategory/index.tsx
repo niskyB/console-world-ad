@@ -23,11 +23,8 @@ export const AddNewCategory: React.FC<AddNewCategoryProps> = () => {
     const _handleOnSubmit = async (data: AddCategoryDto) => {
         try {
             await addNewCategory(data);
-            toast.success(Message.ADD_NEW_CATEGORY_SUCCESS);
             router.push(routes.categoryListUrl);
-        } catch (err) {
-            toast.error(Message.ADD_NEW_CATEGORY_FAILED);
-        }
+        } catch (err) {}
     };
 
     return (

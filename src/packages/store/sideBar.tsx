@@ -1,4 +1,5 @@
-import { ArrowCircleLeftIcon, CalendarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/solid';
+import { ViewBoardsIcon } from '@heroicons/react/outline';
+import { ArrowCircleLeftIcon, CalendarIcon, FolderIcon, HomeIcon, InboxIcon, TagIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -16,8 +17,8 @@ const _handleLogout = async () => {
 
 const navigation = [
     { name: 'Dashboard', icon: HomeIcon, href: routes.homeUrl, current: true },
-    { name: 'Category', icon: UsersIcon, href: routes.categoryListUrl, current: false },
-    { name: 'Projects', icon: FolderIcon, href: '#', current: false },
+    { name: 'Category', icon: ViewBoardsIcon, href: routes.categoryListUrl, current: false },
+    { name: 'Product', icon: FolderIcon, href: routes.productListUrl, current: false },
     { name: 'Calendar', icon: CalendarIcon, href: '#', current: false },
     { name: 'Documents', icon: InboxIcon, href: '#', current: false },
     { name: 'Logout', icon: ArrowCircleLeftIcon, href: '#', onClick: _handleLogout, current: false },

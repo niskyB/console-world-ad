@@ -12,4 +12,8 @@ export const routes = {
     // Category
     categoryListUrl: '/category',
     newCategoryUrl: '/category/new',
+
+    // Product
+    productListUrl: '/product',
+    newProductUrl: '/product/new',
 };
